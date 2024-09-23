@@ -49,7 +49,7 @@ def parse_account_summary(content):
 def parse_transactions(content, start_date, end_date):
     transactions = []
     #pattern = r'(\d{2}/\d{2}/\d{4})\s+(.*?)\s+([-\d,.]+\*?)\s*([-\d,.]*)'
-    pattern = r'(\d{2}/\d{2}/\d{4})\s+(.*?)\s+([-\d,.]+)(?:\s+([-\d,.]+))?$'
+    pattern = r'(\d{2}/\d{2}/\d{4})\s+(.*?)\s+([-\d,.]+)(?:\s+([-\d,.]+))?$' #worked best pattern
     matches = re.findall(pattern, content, re.MULTILINE)
     
     for match in matches:

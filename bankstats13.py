@@ -1,3 +1,6 @@
+"""
+Imports the os module, which provides a way to interact with the operating system.
+"""
 import os
 import pandas as pd
 import tabula
@@ -64,11 +67,12 @@ def parse_transactions(content, start_date, end_date):
                 
                 # Check if description contains an amount with asterisk
                 desc_parts = description.split()
-                if desc_parts and desc_parts[-1].replace('.', '').replace(',', '').rstrip('*').isdigit():
+                if desc_parts and desc_parts[-1].endswith('*') and desc_parts[-1].replace('.', '').replace(',', '').rstrip('*').isdigit():
                     amount_with_asterisk = desc_parts.pop()
                     description = ' '.join(desc_parts)
                     amount1 = amount_with_asterisk
                     amount2 = ''  # Clear amount2 to ensure it's treated as a single amount transaction
+
                 
                 # Remove asterisk if present in either amount
                 amount1 = amount1.rstrip('*')  
